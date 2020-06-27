@@ -1,0 +1,16 @@
+<nav class="primary-color">
+    <div class="nav-wrapper">
+        {% if SHOW_SIDENAV and not FIXED_SIDENAV %}
+        <a href="#" data-target="nav-sidenav" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
+        {% endif %}
+
+        {% block site_name %}
+        <a href="/" class="brand-logo center">{% if MATERIALIZE_SITE_NAME %}{{ MATERIALIZE_SITE_NAME }}{% elif MATERIALIZE_TITLE %}{{ MATERIALIZE_TITLE }}{% else %}{{ site_name }}{% endif %}</a>
+        {% endblock %}
+
+        <!-- Navbar navigation items -->
+        <ul id="navbar-items" class="right hide-on-med-and-down">
+            {% include_block "justengel_material/navbar_items.html" %}
+        </ul>
+    </div>
+</nav>

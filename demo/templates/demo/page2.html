@@ -1,0 +1,20 @@
+{% extends "base"|with_theme %}
+
+{% block contents %}
+    <h1>Page 2!</h1>
+    <p>Page 2 uses a block for the top navbar.</p>
+    <p>Page 2 also uses the context to change theme colors.</p>
+
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+{% endblock contents %}
+
+
+{% block navbar_items %}
+    <li><a href="/">Index</a></li>
+    <li><a href="/page1">Page 1</a></li>
+    <li><a href="/page2">Page 2</a></li>
+{% endblock %}

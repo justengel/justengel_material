@@ -1,0 +1,23 @@
+{% load static %}
+{% load justengel_material %}
+
+<div style="width: inherit; height: inherit; position: relative; margin-top: 5px; margin-bottom: 5px;">
+    <div style="margin: auto; left: 0; right: 0; top: 0; bottom: 0; z-index: 1; text-align: center;">
+        {% wrap_href user_url %}{% render_user_image user class_names='circle' %}{% endwrap_href %}
+
+        <ul style="font-size: 12pt;">
+        {% if not user.is_anonymous %}
+            <li style="line-height: 26px;">{{ user.get_full_name }}</li>
+            <li style="line-height: 26px;">{{ user.email }}</li>
+            {% if user == request.user %}
+            <li style="line-height: 26px;"><a style="height: 26px; line-height: 26px;" href="{% url 'logout' %}">Sign Out</a></li>
+            {% endif %}
+        {% else %}
+            <li style="line-height: 26px;">Guest</li>
+            <li style="line-height: 26px;"><a style="line-height: 26px;" href="{% url 'login' %}?next={{ url_path }}">Login</a></li>
+        {% endif %}
+        </ul>
+    </div>
+
+    <img style="z-index: -1; width: inherit; height: inherit; opacity: 0.9; position: absolute; margin: auto; top:0; left: 0; right: 0; bottom: 0;" src="{{ background_image }}">
+</div>

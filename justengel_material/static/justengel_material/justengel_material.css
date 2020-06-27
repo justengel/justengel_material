@@ -1,0 +1,13 @@
+
+.user_sidenav {
+    height: 240px;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.sidenav>li.user_sidenav{
+    height: 240px;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}

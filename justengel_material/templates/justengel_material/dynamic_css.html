@@ -1,0 +1,345 @@
+<style id="materialize_dynamic_style">
+{% if primary_color %}
+    .primary-color{
+        background-color: {{ primary_color }} !important;
+    }
+    .primary-color-text{
+        color: {{ primary_color }} !important;
+    }
+
+    /* Places where primary color is used */
+    blockquote {
+      border-left: 5px solid {{ primary_color }};
+    }
+    .pagination a.active{
+        background-color: {{ primary_color }};
+    }
+    nav {
+        background-color: {{ primary_color }};
+    }
+    .sidenav .collapsible-body > ul:not(.collapsible) > li.active,
+    .sidenav.sidenav-fixed .collapsible-body > ul:not(.collapsible) > li.active {
+        background-color: {{ primary_color }};
+    }
+    .table-of-contents a:hover {
+        border-left: 1px solid {{ primary_color }};
+    }
+    .table-of-contents a.active {
+        border-left: 2px solid {{ primary_color }};
+    }
+    .tap-target {
+        background-color: {{ primary_color }};
+    }
+
+    /* Primary color is tab variable */
+    .tabs .tab a:hover, .tabs .tab a.active {
+      color: {{ tabs_text_color }};
+    }
+    .tabs .tab a {
+      color: {{ tabs_text_color_active }}
+    }
+    .tabs .tab.disabled a,
+    .tabs .tab.disabled a:hover {
+      color: {{ tabs_text_color_disabled }}
+    }
+    .tabs .indicator{
+        background-color: {{ tabs_underline_color }};
+    }
+
+    /* Primary color is footer variable */
+    .page-footer {
+        background-color: {{ footer_bg_color }};
+    }
+{% endif %}
+
+{% if secondary_color %}
+    .secondary-color{
+        background-color: {{ secondary_color }} !important;
+    }
+    .secondary-color-text{
+        color: {{ secondary_color }} !important;
+    }
+
+    /* Places where secondary color is used */
+    .secondary-content {
+        color: {{ secondary_color }};
+    }
+
+    /* Secondary color is badge variable */
+    span.badge.new {
+        background-color: {{ badge_bg_color }};
+    }
+
+    /* Secondary color is button variable */
+    .btn:focus, .btn-floating:focus {
+        background-color: {{ button_raised_background_focus }};
+    }
+    .btn {
+        background-color: {{ button_raised_background }};
+    }
+    .btn:hover {
+        background-color: {{ button_raised_background_hover }};
+    }
+    .btn-floating:hover {
+        background-color: {{ button_floating_background_hover }};
+    }
+    .btn-floating {
+        background-color: {{ button_floating_background }};
+    }
+    .fixed-action-btn .fab-backdrop {
+        background-color: {{ button_floating_background }};
+    }
+
+    /* Secondary color is datepicker variable */
+    .datepicker-date-display {
+        background-color: {{ secondary_color }};
+    }
+    .datepicker-table td.is-today {
+        color: {{ secondary_color }};
+    }
+    .datepicker-table td.is-selected{
+        background-color: {{ secondary_color }};
+    }
+    .datepicker-done{
+        color: {{ secondary_color }};
+    }
+    /* Uses the right variable */
+    .datepicker-day-button:focus {
+        background-color: {{ datepicker_day_focus }};
+    }
+
+    /* Secondary color is dropdown variable */
+    .dropdown-content> a, .dropdown-content>span {
+        color: {{ dropdown_color }};
+    }
+
+    /* Secondary color is input variable */
+    [type="checkbox"].filled-in:checked + span:not(.lever):after {
+        border: 2px solid {{ secondary_color }};
+        background-color: {{ secondary_color }};
+    }
+    [type="checkbox"].filled-in.tabbed:checked:focus + span:not(.lever):after {
+        border-color: {{ secondary_color }};
+        background-color: {{ secondary_color }};
+    }
+    button:focus {
+      outline: none;
+      background-color: {{ button_background_focus }};
+    }
+    input:not([type]):focus:not([readonly]),
+    input[type=text]:not(.browser-default):focus:not([readonly]),
+    input[type=password]:not(.browser-default):focus:not([readonly]),
+    input[type=email]:not(.browser-default):focus:not([readonly]),
+    input[type=url]:not(.browser-default):focus:not([readonly]),
+    input[type=time]:not(.browser-default):focus:not([readonly]),
+    input[type=date]:not(.browser-default):focus:not([readonly]),
+    input[type=datetime]:not(.browser-default):focus:not([readonly]),
+    input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
+    input[type=tel]:not(.browser-default):focus:not([readonly]),
+    input[type=number]:not(.browser-default):focus:not([readonly]),
+    input[type=search]:not(.browser-default):focus:not([readonly]),
+    textarea.materialize-textarea:focus:not([readonly]) {
+        border-bottom: 1px solid {{ input_focus_color }};
+        box-shadow: 0 1px 0 0 {{ input_focus_color }};
+    }
+    input:not([type]):focus:not([readonly])+label,
+    input[type=text]:not(.browser-default):focus:not([readonly])+label,
+    input[type=password]:not(.browser-default):focus:not([readonly])+label,
+    input[type=email]:not(.browser-default):focus:not([readonly])+label,
+    input[type=url]:not(.browser-default):focus:not([readonly])+label,
+    input[type=time]:not(.browser-default):focus:not([readonly])+label,
+    input[type=date]:not(.browser-default):focus:not([readonly])+label,
+    input[type=datetime]:not(.browser-default):focus:not([readonly])+label,
+    input[type=datetime-local]:not(.browser-default):focus:not([readonly])+label,
+    input[type=tel]:not(.browser-default):focus:not([readonly])+label,
+    input[type=number]:not(.browser-default):focus:not([readonly])+label,
+    input[type=search]:not(.browser-default):focus:not([readonly])+label,
+    textarea.materialize-textarea:focus:not([readonly])+label {
+        color: {{ input_focus_color }};
+    }
+    .input-field .prefix.active {
+        color: {{ input_focus_color }};
+    }
+    input.select-dropdown:focus {
+        border-bottom: 1px solid {{ input_focus_color }};
+    }
+
+    /* Secondary color is radio variable */
+    [type="radio"]:checked + span:after,
+    [type="radio"].with-gap:checked + span:after {
+        background-color: {{ radio_fill_color }};
+    }
+    [type="radio"]:checked + span:after,
+    [type="radio"].with-gap:checked + span:before,
+    [type="radio"].with-gap:checked + span:after {
+        border: {{ radio_border }};
+    }
+    input[type=range] + .thumb {
+        background-color: {{ radio_fill_color }};
+    }
+    input[type=range] + .thumb .value {
+        color: {{ radio_fill_color }};
+    }
+    /* @mixin range-thumb {
+        background: {{ radio_fill_color }};
+    }*/
+    input[type=range]::-webkit-slider-thumb {
+        background-color: {{ radio_fill_color }};
+    }
+    .keyboard-focused input[type=range]:focus:not(.active)::-webkit-slider-thumb {
+        box-shadow: 0 0 0 10px rgba({{ radio_fill_color }}, .26);
+    }
+    .keyboard-focused input[type=range]:focus:not(.active)::-moz-range-thumb {
+        box-shadow: 0 0 0 10px rgba({{ radio_fill_color }}, .26);
+    }
+    .keyboard-focused input[type=range]:focus:not(.active)::-ms-thumb {
+        box-shadow: 0 0 0 10px rgba({{ radio_fill_color }}, .26);
+    }
+
+    /* Secondary color is select variable */
+    input.select-dropdown:focus {
+        border-bottom: 1px solid {{ input_focus_color }};
+    }
+
+    /* Secondary color is switch variable */
+    .switch label input[type=checkbox]:checked + .lever:after {
+        background-color: {{ switch_bg_color }};
+    }
+    .switch label .lever:before {
+        background-color: {{ switch_bg_color_transparentize }};
+    }
+    input[type=checkbox]:checked:not(:disabled) ~ .lever:active::before,
+    input[type=checkbox]:checked:not(:disabled).tabbed:focus ~ .lever::before {
+        background-color: {{ switch_bg_color_transparentize }};
+    }
+    .switch label input[type=checkbox]:checked + .lever {
+        background-color: {{ switch_checked_lever_bg }};
+    }
+
+    /* Secondary color is spinner variable */
+    .spinner-layer {
+        border-color: {{ spinner_default_color }};
+    }
+
+    /* Secondary color is timepicker variable */
+    .timepicker-digital-display{
+        background-color: {{ secondary_color }};
+    }
+    .timepicker-tick:hover{
+        background-color: {{ timepicker_tick_hover }};
+    }
+    .timepicker-canvas line {
+        stroke: {{ secondary_color }};
+    }
+    .timepicker-canvas-bearing {
+        fill: {{ secondary_color }};
+    }
+    .timepicker-canvas-bg {
+        fill: {{ secondary_color }};
+    }
+    .timepicker-close{
+        color: {{ secondary_color }};
+    }
+
+    /* Secondary color is collection variable */
+    .collection .collection-item.active {
+        background-color: {{ collection_active_bg_color }};
+        color: {{ collection_active_color }};
+    }
+    .collection a.collection-item{
+        color: {{ collection_link_color }};
+    }
+
+    /* Secondary color is progress-bar variable */
+    .progress {
+        background-color: {{ progress_bar_color_lighten }};
+    }
+    .progress .determinate {
+        background-color: {{ progress_bar_color }};
+    }
+    .progress .indeterminate {
+        background-color: {{ progress_bar_color }};
+    }
+{% endif %}
+
+{% if success_color %}
+    .success-color{
+        background-color: {{ success_color }} !important;
+    }
+    .success-color-text{
+        color: {{ success_color }} !important;
+    }
+
+    input:not([type]):focus.valid ~ label,
+    input[type=text]:not(.browser-default):focus.valid ~ label,
+    input[type=password]:not(.browser-default):focus.valid ~ label,
+    input[type=email]:not(.browser-default):focus.valid ~ label,
+    input[type=url]:not(.browser-default):focus.valid ~ label,
+    input[type=time]:not(.browser-default):focus.valid ~ label,
+    input[type=date]:not(.browser-default):focus.valid ~ label,
+    input[type=datetime]:not(.browser-default):focus.valid ~ label,
+    input[type=datetime-local]:not(.browser-default):focus.valid ~ label,
+    input[type=tel]:not(.browser-default):focus.valid ~ label,
+    input[type=number]:not(.browser-default):focus.valid ~ label,
+    input[type=search]:not(.browser-default):focus.valid ~ label,
+    textarea.materialize-textarea:focus.valid ~ label {
+        color: {{ input_success_color }};
+    }
+    /*
+    .valid-input-style {
+        border-bottom: 1px solid {{ input_success_color }};
+        box-shadow: 0 1px 0 0 {{ input_success_color }};
+    }
+    .custom-success-message {
+        color: {{ input_success_color }};
+    }
+    */
+{% endif %}
+
+{% if error_color %}
+    .error-color{
+        background-color: {{ error_color }} !important;
+    }
+    .error-color-text{
+        color: {{ error_color }} !important;
+    }
+
+    input:not([type]):focus.invalid ~ label,
+    input[type=text]:not(.browser-default):focus.invalid ~ label,
+    input[type=password]:not(.browser-default):focus.invalid ~ label,
+    input[type=email]:not(.browser-default):focus.invalid ~ label,
+    input[type=url]:not(.browser-default):focus.invalid ~ label,
+    input[type=time]:not(.browser-default):focus.invalid ~ label,
+    input[type=date]:not(.browser-default):focus.invalid ~ label,
+    input[type=datetime]:not(.browser-default):focus.invalid ~ label,
+    input[type=datetime-local]:not(.browser-default):focus.invalid ~ label,
+    input[type=tel]:not(.browser-default):focus.invalid ~ label,
+    input[type=number]:not(.browser-default):focus.invalid ~ label,
+    input[type=search]:not(.browser-default):focus.invalid ~ label,
+    textarea.materialize-textarea:focus.invalid ~ label {
+        color: {{ input_error_color }};
+    }
+    /*
+    .invalid-input-style {
+      border-bottom: {{ input_invalid_border }};
+      box-shadow: 0 1px 0 0 {{ input_error_color }};
+    }
+    .custom-error-message {
+        color: {{ input_error_color }};
+    }
+    */
+{% endif %}
+
+{% if link_color %}
+    .link-color{
+        background-color: {{ link_color }} !important;
+    }
+    .link-color-text{
+        color: {{ link_color }} !important;
+    }
+
+    a {
+        color: {{ link_color }};
+    }
+{% endif %}
+</style>

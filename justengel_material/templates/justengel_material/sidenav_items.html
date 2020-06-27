@@ -1,0 +1,15 @@
+{# load justengel_material #}
+<li class="user_sidenav">{# render_user_background request.user #}</li>
+<!-- SIDENAV Link Items -->
+<!--<li><div class="user-view">-->
+<!--<div class="background">-->
+<!--<img src="images/office.jpg">-->
+<!--</div>-->
+<!--<a href="#user"><img class="circle" src="images/yuna.jpg"></a>-->
+<!--<a href="#name"><span class="white-text name">John Doe</span></a>-->
+<!--<a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>-->
+<!--</div></li>-->
+<!--<li><a href="#!"><i class="demo-icons">cloud</i>First Link With Icon</a></li>-->
+{% for link in SIDENAV_ITEMS %}
+<li><a href="link.href">{{ link.name }}</a></li>
+{% endfor %}

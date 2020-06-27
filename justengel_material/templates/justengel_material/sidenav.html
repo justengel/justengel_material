@@ -1,0 +1,10 @@
+{% if SHOW_SIDENAV %}
+<ul id="nav-sidenav" class="sidenav{% if FIXED_SIDENAV %} sidenav-fixed{% endif %}">
+    {% if title %}
+    <li><h4 class="center">{% if MATERIALIZE_SITE_NAME %}{{ MATERIALIZE_SITE_NAME }}{% elif MATERIALIZE_TITLE %}{{ MATERIALIZE_TITLE }}{% else %}{{ site_name }}{% endif %}</h4></li>
+    <li><div class="divider"></div></li>
+    {% endif %}
+
+    {% include_block "justengel_material/sidenav_items.html" %}
+</ul>
+{% endif %}

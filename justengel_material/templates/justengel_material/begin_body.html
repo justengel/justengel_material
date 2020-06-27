@@ -1,0 +1,36 @@
+{% macro input(name, value='', type='text', size=20) -%}
+<input type="{{ type }}" name="{{ name }}" value="{{
+        value|e }}" size="{{ size }}">
+{%- endmacro %}
+
+{# materialize_js_url #}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+{# materialize_jquery_url #}
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+{# justengel_material_js_url #}
+<script src="{{ 'justengel_material/justengel_material.js'|static }}"></script>
+
+{# justengel_material_color_js_url #}
+<script src="{{ 'justengel_material/justengel_material_colors.js'|static }}"></script>
+
+{# Display messages #}
+{% include_block "justengel_material/messages.html" block_name="messages" %}
+
+
+<script type="text/javascript">
+    // Color variables
+    var primary_color = "{{ PRIMARY_COLOR }}";
+    var secondary_color = "{{ SECONDARY_COLOR }}";
+    var primary_color_light = "{{ PRIMARY_COLOR_LIGHT }}";
+    var primary_color_dark = "{{ PRIMARY_COLOR_DARK }}";
+    var success_color = "{{ SUCCESS_COLOR }}";
+    var error_color = "{{ ERROR_COLOR }}";
+    var link_color = "{{ LINK_COLOR }}";
+
+    // Change the CSS Colors from the context variables
+    change_css_colors();
+</script>

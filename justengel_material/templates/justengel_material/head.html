@@ -1,0 +1,28 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+{# Load CSS and JavaScript #}
+
+{# material_icons_url #}
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+{# materialize_css_url #}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+{# justengel_material_css_url #}
+<link rel="stylesheet" href="{{ 'justengel_material/justengel_material.css'|static }}">
+
+
+<style>
+    {% if SHOW_SIDENAV and FIXED_SIDENAV %}
+    header, main, footer {
+        padding-left: 300px;
+    }
+
+    @media only screen and (max-width : 992px) {
+        header, main, footer {
+            padding-left: 0;
+        }
+    }
+
+    {% endif %}
+</style>
