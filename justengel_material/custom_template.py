@@ -31,8 +31,8 @@ class MaterialTemplates(ThemeTemplates):
         'LINK_COLOR': None,
         }
 
-    def __init__(self, main_directory: str, theme: str = 'justengel_material', static_url: str = '/static') -> None:
-        super().__init__(main_directory, theme=theme, static_url=static_url)
+    def __init__(self, directory: str = None, theme: str = 'justengel_material', static_url: str = '/static') -> None:
+        super().__init__(directory=directory, theme=theme, static_url=static_url)
 
     # ===== Helper functions =====
     @staticmethod
