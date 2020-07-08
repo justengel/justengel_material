@@ -1,5 +1,5 @@
 name = 'justengel_material'
-version = '1.0.0'
+version = '1.0.1'
 description = 'Jinja Materializecss theme capability'
 url = 'https://github.com/justengel-web/justengel_material'
 author = 'Justin Engel'
