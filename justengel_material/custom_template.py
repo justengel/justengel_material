@@ -44,7 +44,10 @@ class MaterialTemplates(ThemeTemplates):
                 context['NAVBAR_ITEMS'] = [i for i in self.DEFAULT_CONTEXT['NAVBAR_ITEMS']]
             else:
                 context['NAVBAR_ITEMS'] = []
-        context['NAVBAR_ITEMS'].append(Link(name=name, href=href))
+
+        link = Link(name=name, href=href)
+        if link not in context['NAVBAR_ITEMS']:
+            context['NAVBAR_ITEMS'].append(link)
 
     def add_sidenav_item(self, context: dict, name: str, href: str, with_default: bool = True):
         if 'SIDENAV_ITEMS' not in context:
@@ -52,7 +55,10 @@ class MaterialTemplates(ThemeTemplates):
                 context['SIDENAV_ITEMS'] = [i for i in self.DEFAULT_CONTEXT['SIDENAV_ITEMS']]
             else:
                 context['SIDENAV_ITEMS'] = []
-        context['SIDENAV_ITEMS'].append(Link(name=name, href=href))
+
+        link = Link(name=name, href=href)
+        if link not in context['SIDENAV_ITEMS']:
+            context['SIDENAV_ITEMS'].append(link)
 
     def add_message(self, context: dict, msg_type: str, msg: str, with_default: bool = True):
         if 'MESSAGES' not in context:
