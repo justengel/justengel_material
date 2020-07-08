@@ -1,6 +1,7 @@
 import os
 from typing import ClassVar
 from justengel_theme import ThemeTemplates
+from justengel_material.utils import Link, Message
 
 
 __all__ = ['MY_DIR', 'MaterialTemplates']
@@ -29,10 +30,37 @@ class MaterialTemplates(ThemeTemplates):
         'SUCCESS_COLOR': None,
         'ERROR_COLOR': None,
         'LINK_COLOR': None,
+        'NAVBAR_ITEMS': [],
+        'SIDENAV_ITEMS': [],
+        'MESSAGES': [],
         }
 
     def __init__(self, directory: str = None, theme: str = 'justengel_material', static_url: str = '/static') -> None:
         super().__init__(directory=directory, theme=theme, static_url=static_url)
+
+    def add_navbar_item(self, context: dict, name: str, href: str, with_default: bool = True):
+        if 'NAVBAR_ITEMS' not in context:
+            if with_default:
+                context['NAVBAR_ITEMS'] = [i for i in self.DEFAULT_CONTEXT['NAVBAR_ITEMS']]
+            else:
+                context['NAVBAR_ITEMS'] = []
+        context['NAVBAR_ITEMS'].append(Link(name=name, href=href))
+
+    def add_sidenav_item(self, context: dict, name: str, href: str, with_default: bool = True):
+        if 'SIDENAV_ITEMS' not in context:
+            if with_default:
+                context['SIDENAV_ITEMS'] = [i for i in self.DEFAULT_CONTEXT['SIDENAV_ITEMS']]
+            else:
+                context['SIDENAV_ITEMS'] = []
+        context['SIDENAV_ITEMS'].append(Link(name=name, href=href))
+
+    def add_message(self, context: dict, msg_type: str, msg: str, with_default: bool = True):
+        if 'MESSAGES' not in context:
+            if with_default:
+                context['MESSAGES'] = [i for i in self.DEFAULT_CONTEXT['MESSAGES']]
+            else:
+                context['MESSAGES'] = []
+        context['MESSAGES'].append(Message(msg_type=msg_type, msg=msg))
 
     # ===== Helper functions =====
     @staticmethod

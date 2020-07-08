@@ -1,9 +1,9 @@
 {# load justengel_material #}
 <script type="text/javascript">
-{% for message in messages %}
+{% for message in MESSAGES %}
   M.toast({
-    'html': '{{ message }}',
-    'classes': '{{ MESSAGE_LEVEL_CLASSES[message] }}',
+    'html': '{{ message.msg }}',
+    'classes': '{{ message.msg_class }}',
   });
 {% endfor %}
 </script>
