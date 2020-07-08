@@ -1,16 +1,18 @@
 from typing import ClassVar
-from pydantic import BaseModel
+from dataclasses import dataclass
 
 
 __all__ = ['Link', 'Message']
 
 
-class Link(BaseModel):
+@dataclass
+class Link:
     name: str
     href: str = '#'
 
 
-class Message(BaseModel):
+@dataclass
+class Message:
     msg_type: str
     msg: str
 
