@@ -1,7 +1,7 @@
 <nav class="primary-color">
     <div class="nav-wrapper">
-        {% if SHOW_SIDENAV and not FIXED_SIDENAV %}
-        <a href="#" data-target="nav-sidenav" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
+        {% if SHOW_SIDENAV or FIXED_SIDENAV %}
+        <a href="#" data-target="nav-sidenav" class="sidenav-trigger{% if FIXED_SIDENAV %} hide-on-large{% else %} show-on-small show-on-medium-and-up{% endif %}"><i class="material-icons">menu</i></a>
         {% endif %}
 
         {% block site_name %}
