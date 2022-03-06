@@ -1,14 +1,20 @@
 from typing import ClassVar
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 
-__all__ = ['Link', 'Message']
+__all__ = ['Link', 'LinkGroup', 'Message']
 
 
 @dataclass
 class Link:
     name: str
     href: str = '#'
+
+
+@dataclass
+class LinkGroup:
+    name: str
+    links: list = field(default_factory=list, compare=False)
 
 
 @dataclass

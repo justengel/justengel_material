@@ -1,4 +1,8 @@
 <!-- <li><a href="/my/url">Sass</a></li> -->
 {% for link in NAVBAR_ITEMS %}
+{% if link.links is defined %}
+<li><a class="dropdown-trigger" href="#!" data-target="{{ link.name|name_to_id }}_dropdown">{{ link.name }}<i class="material-icons right">arrow_drop_down</i></a></li>
+{% else %}
 <li><a href="{{ link.href }}">{{ link.name }}</a></li>
+{% endif %}
 {% endfor %}

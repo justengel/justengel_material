@@ -1,13 +1,20 @@
 import os
-from typing import ClassVar
+import re
+from typing import ClassVar, Union
 from justengel_theme import ThemeTemplates
-from justengel_material.utils import Link, Message
+from justengel_material.utils import Link, LinkGroup, Message
 
 
 __all__ = ['MY_DIR', 'MaterialTemplates']
 
 
 MY_DIR = os.path.dirname(__file__)
+REGEX_VAR_NAME = re.compile('^[^a-zA-Z_]+|[^a-zA-Z_0-9]+')
+
+
+def name_to_id(name):
+    """Convert a display name to a html id."""
+    return REGEX_VAR_NAME.sub('', name)
 
 
 class MaterialTemplates(ThemeTemplates):
@@ -35,10 +42,16 @@ class MaterialTemplates(ThemeTemplates):
         'MESSAGES': [],
         }
 
+    DEFAULT_FILTERS = ThemeTemplates.DEFAULT_FILTERS
+    DEFAULT_FILTERS.update({
+        'name_to_id': name_to_id,
+    })
+
     def __init__(self, directory: str = None, theme: str = 'justengel_material', static_url: str = '/static') -> None:
         super().__init__(directory=directory, theme=theme, static_url=static_url)
 
-    def add_navbar_item(self, context: dict, name: str, href: str, with_default: bool = True):
+    def add_navbar_item(self, context: dict, name: str, href: str, group: Union[LinkGroup, str] = None,
+                        with_default: bool = True):
         if 'NAVBAR_ITEMS' not in context:
             if with_default:
                 context['NAVBAR_ITEMS'] = [i for i in self.DEFAULT_CONTEXT['NAVBAR_ITEMS']]
@@ -46,10 +59,39 @@ class MaterialTemplates(ThemeTemplates):
                 context['NAVBAR_ITEMS'] = []
 
         link = Link(name=name, href=href)
-        if link not in context['NAVBAR_ITEMS']:
+        if isinstance(group, LinkGroup):
+            # Add to the group
+            group.links.append(link)
+
+        elif isinstance(group, str):
+            # Find the group name and add to the group
+            for grp in context['NAVBAR_ITEMS']:
+                if group == grp.name:
+                    grp.links.append(link)
+                    break
+            else:
+                raise ValueError('NavBar Group "{}" not found!'.format(group))
+
+        elif link not in context['NAVBAR_ITEMS']:
+            # Add the link to the top level sidenav
             context['NAVBAR_ITEMS'].append(link)
 
-    def add_sidenav_item(self, context: dict, name: str, href: str, with_default: bool = True):
+    def add_navbar_group(self, context: dict, name: str, links: list = None, with_default: bool = True):
+        if 'NAVBAR_ITEMS' not in context:
+            if with_default:
+                context['NAVBAR_ITEMS'] = [i for i in self.DEFAULT_CONTEXT['NAVBAR_ITEMS']]
+            else:
+                context['NAVBAR_ITEMS'] = []
+
+        if links is None:
+            links = []
+
+        grp = LinkGroup(name=name, links=links)
+        if grp not in context['NAVBAR_ITEMS']:
+            context['NAVBAR_ITEMS'].append(grp)
+
+    def add_sidenav_item(self, context: dict, name: str, href: str, group: Union[LinkGroup, str] = None,
+                         with_default: bool = True):
         if 'SIDENAV_ITEMS' not in context:
             if with_default:
                 context['SIDENAV_ITEMS'] = [i for i in self.DEFAULT_CONTEXT['SIDENAV_ITEMS']]
@@ -57,8 +99,36 @@ class MaterialTemplates(ThemeTemplates):
                 context['SIDENAV_ITEMS'] = []
 
         link = Link(name=name, href=href)
-        if link not in context['SIDENAV_ITEMS']:
+        if isinstance(group, LinkGroup):
+            # Add to the group
+            group.links.append(link)
+
+        elif isinstance(group, str):
+            # Find the group name and add to the group
+            for grp in context['SIDENAV_ITEMS']:
+                if group == grp.name:
+                    grp.links.append(link)
+                    break
+            else:
+                raise ValueError('SideNav Group "{}" not found!'.format(group))
+
+        elif link not in context['SIDENAV_ITEMS']:
+            # Add the link to the top level sidenav
             context['SIDENAV_ITEMS'].append(link)
+
+    def add_sidenav_group(self, context: dict, name: str, links: list = None, with_default: bool = True):
+        if 'SIDENAV_ITEMS' not in context:
+            if with_default:
+                context['SIDENAV_ITEMS'] = [i for i in self.DEFAULT_CONTEXT['SIDENAV_ITEMS']]
+            else:
+                context['SIDENAV_ITEMS'] = []
+
+        if links is None:
+            links = []
+
+        grp = LinkGroup(name=name, links=links)
+        if grp not in context['SIDENAV_ITEMS']:
+            context['SIDENAV_ITEMS'].append(grp)
 
     def add_message(self, context: dict, msg_type: str, msg: str, with_default: bool = True):
         if 'MESSAGES' not in context:

@@ -1,3 +1,17 @@
+<!-- Dropdown Structure -->
+{% if NAVBAR_ITEMS is defined and NAVBAR_ITEMS|length > 0 %}
+  {% for link in NAVBAR_ITEMS %}
+    {% if link.links is defined and link.links|length > 0 %}
+  <ul id="{{ link.name|name_to_id }}_dropdown" class="dropdown-content">
+      {% for lo in link.links %}
+    <li><a href="{{ lo.href }}">{{ lo.name }}</a></li>
+      {% endfor %}
+  </ul>
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<!-- Nav Bar -->
 <nav class="primary-color">
     <div class="nav-wrapper">
         {% if SHOW_SIDENAV or FIXED_SIDENAV %}
